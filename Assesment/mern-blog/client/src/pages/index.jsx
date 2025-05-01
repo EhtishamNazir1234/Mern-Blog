@@ -31,9 +31,7 @@ export default function Home() {
   const handleCreatePost = () => {
     navigate('/posts/new');
   };
-// Update the fetch URL
-const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/posts`);// Update the fetch URL
-const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/posts`);
+
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
