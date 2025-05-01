@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/posts');
+        const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/posts`);
         if (!response.ok) {
           throw new Error(`Server responded with status: ${response.status}`);
         }
@@ -31,7 +31,9 @@ export default function Home() {
   const handleCreatePost = () => {
     navigate('/posts/new');
   };
-
+// Update the fetch URL
+const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/posts`);// Update the fetch URL
+const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/posts`);
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',

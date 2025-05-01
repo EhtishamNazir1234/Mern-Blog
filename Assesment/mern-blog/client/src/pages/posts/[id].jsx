@@ -11,7 +11,7 @@ export default function Post({ id }) {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/posts/${id}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/posts/${id}`);
         if (!response.ok) {
           throw new Error(`Server responded with status: ${response.status}`);
         }
