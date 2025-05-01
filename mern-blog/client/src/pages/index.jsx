@@ -28,11 +28,10 @@ export default function Home() {
     };
     
     fetchPosts();
-  }, []);
+  }, [API_URL]);
 
   const handleCreatePost = () => {
-    const basePath = import.meta.env.DEV ? '' : '/mern-blog';
-    navigate(`${basePath}/posts/new`);
+    navigate('/posts/new');
   };
 
   const formatDate = (dateString) => {
@@ -64,7 +63,11 @@ export default function Home() {
             </div>
           ) : (
             posts.map((post) => (
-              <article key={post._id} className="post-card" onClick={() => navigate(`/posts/${post._id}`)}>
+              <article 
+                key={post._id} 
+                className="post-card" 
+                onClick={() => navigate(`/posts/${post._id}`)}
+              >
                 <h2>{post.title}</h2>
                 <div className="post-meta">
                   <span className="post-author">By: {post.author || 'Anonymous'}</span>
