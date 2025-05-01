@@ -6,31 +6,29 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import postRoutes from './routes/posts.js';
 
-// Load environment variables
 dotenv.config();
 
-// Create Express app
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Get current file path (ESM specific)
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Middleware
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // Local development
-      "mern-blog-omega-ashen.vercel.app", // Your Vercel deployment
+      "http://localhost:5173", 
+      "https://mern-blog-omega-ashen.vercel.app", 
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
-app.use(express.json()); // Parse JSON request bodies
+app.use(express.json()); 
 
-// Routes
+
 app.use('/api/posts', postRoutes);
 
 // Root route
@@ -38,7 +36,7 @@ app.get('/', (req, res) => {
   res.send('MERN Blog API is running...');
 });
 
-// Connect to MongoDB
+
 const connectDB = async () => {
   try {
 
@@ -50,7 +48,6 @@ const connectDB = async () => {
   }
 };
 
-// Start server
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
