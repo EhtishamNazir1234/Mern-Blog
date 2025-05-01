@@ -16,7 +16,7 @@ export default function NewPost() {
     
     // form validation
     if (!title.trim() || !body.trim()) {
-      setError('Title and body are required');
+      setError('Title   and body are required');
       return;
     }
 
