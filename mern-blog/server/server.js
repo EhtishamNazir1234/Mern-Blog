@@ -19,8 +19,9 @@ const __dirname = dirname(__filename);
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", 
-      "https://mern-blog-omega-ashen.vercel.app", 
+      "http://localhost:5173",
+      "https://mern-blog-omega-ashen.vercel.app",
+      "https://mern-blog-ixd6.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
