@@ -8,10 +8,12 @@ export default function Home() {
   const [error, setError] = useState(null);
   const { navigate } = useRouter();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/posts`);
+        const response = await fetch(`${API_URL}/api/posts`);
         if (!response.ok) {
           throw new Error(`Server responded with status: ${response.status}`);
         }
@@ -29,7 +31,8 @@ export default function Home() {
   }, []);
 
   const handleCreatePost = () => {
-    navigate('/posts/new');
+    const basePath = import.meta.env.DEV ? '' : '/mern-blog';
+    navigate(`${basePath}/posts/new`);
   };
 
   const formatDate = (dateString) => {

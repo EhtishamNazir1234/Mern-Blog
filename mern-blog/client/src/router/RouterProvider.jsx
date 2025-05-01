@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { getComponentForPath } from './fileMatcher.jsx';
+import { getBasePath } from '../utils/api';
 
 const RouterContext = createContext({
   navigate: () => {},
@@ -64,3 +65,15 @@ export function RouterProvider({ children }) {
     </RouterContext.Provider>
   );
 }
+
+const Router = () => {
+  const basePath = getBasePath();
+  
+  return (
+    <Routes>
+      <Route path={`${basePath}/`} element={<Home />} />
+      <Route path={`${basePath}/posts/new`} element={<NewPost />} />
+      {/* ...other routes... */}
+    </Routes>
+  );
+};
